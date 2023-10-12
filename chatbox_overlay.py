@@ -44,7 +44,7 @@ class ChatboxOverlay:
         draw = ImageDraw.Draw(image)
 
         # Calculate text dimensions
-        text_width, text_height = draw.textsize(text, font=loaded_font)
+        text_width, text_height = loaded_font.getsize(text)
 
         # Calculate the number of lines needed for word wrapping
         lines = []
