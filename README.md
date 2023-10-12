@@ -13,5 +13,6 @@ Adjust the start locations by calculating your image axis in pixels.
 
 For the sample chatbox image included, save and load this image into ComfyUI.
 
+![Filename Text 1_231012001707_Filename Text 2_00001_Filename Text 3](https://github.com/Smuzzies/comfyui_chatbox_overlay/assets/110495122/29aab687-e220-4c6b-8cf6-e999a0458c35)
 
 Credits to https://github.com/mikkel/ComfyUI-text-overlay and ChatGPT.
