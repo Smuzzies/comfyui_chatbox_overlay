@@ -12,6 +12,8 @@ Included is a sample chatbox for 1024x1024 images.
 Adjust the start locations by calculating your image axis in pixels.
 Adjust your font location. Ex. for windows it might be c:/windows/fonts/font.ttf
 
+![image](https://github.com/Smuzzies/comfyui_chatbox_overlay/assets/110495122/62f54994-31f3-4846-9618-8b34336036e1)
+
 ## Workflow:
 For the sample chatbox image included, save and load this image into ComfyUI.
 
