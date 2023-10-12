@@ -10,6 +10,7 @@ Add the node just before your save node by searching for "Chatbox Overlay".
 
 Included is a sample chatbox for 1024x1024 images.
 Adjust the start locations by calculating your image axis in pixels.
+Adjust your font location. Ex. for windows it might be c:/windows/fonts/font.ttf
 
 For the sample chatbox image included, save and load this image into ComfyUI.
 
