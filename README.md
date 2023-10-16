@@ -21,5 +21,9 @@ For the sample chatbox image included, save and load this image into ComfyUI.
 
 ![image](https://github.com/Smuzzies/comfyui_chatbox_overlay/assets/110495122/b633e129-94f2-4590-b54c-348d751dc0e0)
 
+Example of stacking from X/Y coord calculations based of your image size.
+
+![image](https://github.com/Smuzzies/comfyui_chatbox_overlay/assets/110495122/c1bfd52a-4b20-4111-9ede-d8ebc8fcc725)
+
 
 ## Credits to https://github.com/mikkel/ComfyUI-text-overlay and ChatGPT.
