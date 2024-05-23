@@ -1,0 +1,14 @@
+[project]
+name = "comfyui_chatbox_overlay"
+description = "Nodes: Chatbox Overlay. Custom node for ComfyUI to add a text box over a processed image before save node."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/Smuzzies/comfyui_chatbox_overlay"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "comfyui_chatbox_overlay"
+Icon = ""
