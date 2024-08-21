@@ -49,27 +49,28 @@ class ChatboxOverlay:
 
             # Calculate text dimensions of the wrapped text
             wrapped_text = self.wrap_text(text, loaded_font, textbox_width)
-            text_width, text_height = draw.textsize(wrapped_text, font=loaded_font)
+            _, _, text_width, text_height = ImageDraw.Draw(image).textbbox((0, 0), wrapped_text, font=loaded_font)
 
             # Check if text fits within the textbox dimensions
             if text_width <= textbox_width and text_height <= textbox_height:
                 # Calculate total text height for vertical centering
                 lines = wrapped_text.split('\n')
-                total_text_height = len(lines) * loaded_font.getsize("M")[1]  # Use font ascent for line height
+                total_text_height = len(lines) * self.font_getsize(loaded_font, "M")[1]  # Use font ascent for line height
 
                 # Calculate y-coordinate for vertical centering, considering font ascent
-                y = start_y + ((textbox_height - total_text_height) // 2) + loaded_font.getsize("M")[1] // 2
+                y = start_y + ((textbox_height - total_text_height) // 2) + self.font_getsize(loaded_font, "M")[1] // 2
 
                 # Draw the wrapped text on the image
                 x = start_x  # Start from the specified X-coordinate
                 for line in lines:
-                    line_width, line_height = draw.textsize(line, font=loaded_font)
+                    _, _, line_width, line_height = ImageDraw.Draw(image).textbbox((0, 0), line, font=loaded_font)
+
                     if alignment == "center":
                         x = start_x + (textbox_width - line_width) // 2
                     elif alignment == "right":
                         x = start_x + (textbox_width - line_width)
                     draw.text((x, y), line, fill=color_rgb, font=loaded_font)
-                    y += loaded_font.getsize("M")[1]  # Use font ascent for line height
+                    y += self.font_getsize(loaded_font, "M")[1]  # Use font ascent for line height
 
                 # Convert back to Tensor if needed
                 image_tensor_out = torch.tensor(np.array(image).astype(np.float32) / 255.0)  # Convert back to CxHxW
@@ -85,6 +86,11 @@ class ChatboxOverlay:
         image_tensor_out = torch.unsqueeze(image_tensor_out, 0)
         return (image_tensor_out,)
 
+    def font_getsize(self, font, text):
+        left, top, right, bottom = font.getbbox(text)
+        tw, th = right - left, bottom - top
+        return (tw, th)
+
     def wrap_text(self, text, font, max_width):
         lines = []
         for line in text.split('\n'):
@@ -92,7 +98,7 @@ class ChatboxOverlay:
             wrapped_line = words[0]
             for word in words[1:]:
                 test_line = wrapped_line + ' ' + word
-                test_size = font.getsize(test_line)
+                test_size = self.font_getsize(font, test_line)
                 if test_size[0] <= max_width:
                     wrapped_line = test_line
                 else:
