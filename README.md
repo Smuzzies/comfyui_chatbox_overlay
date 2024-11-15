@@ -1,6 +1,7 @@
 # Chatbox Overlay node for ComfyUI
 ## Custom node for ComfyUI to add a text box over a processed image before save node.
-
+UPDATED TO NEW PIL VERSION
+ADDED LINE SPACING INPUT
 ## Installation:
 
 Download the py file and place it in the customnodes directory of your ComfyUI installation path.
