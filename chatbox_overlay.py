@@ -21,13 +21,14 @@ class ChatboxOverlay:
                 "color": ("STRING", {"default": "#000000"}),
                 "start_x": ("INT", {"default": 0}),
                 "start_y": ("INT", {"default": 0}),
+                "line_spacing": ("FLOAT", {"default": 1.5, "min": 1.0, "max": 2.0, "step": 0.1}),
             }
         }
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "draw_text_on_image"
     CATEGORY = "image/text"
 
-    def draw_text_on_image(self, image, text, textbox_width, textbox_height, max_font_size, font, alignment, color, start_x, start_y):
+    def draw_text_on_image(self, image, text, textbox_width, textbox_height, max_font_size, font, alignment, color, start_x, start_y, line_spacing):
         image_tensor = image
         image_np = image_tensor.cpu().numpy()
         image = Image.fromarray((image_np.squeeze(0) * 255).astype(np.uint8))
@@ -55,7 +56,7 @@ class ChatboxOverlay:
                     elif alignment == "right":
                         x = start_x + (textbox_width - line_width)
                     draw.text((x, y), line, fill=color_rgb, font=loaded_font)
-                    y += line_height
+                    y += int(line_height * line_spacing)
                 image_tensor_out = torch.tensor(np.array(image).astype(np.float32) / 255.0)
                 image_tensor_out = torch.unsqueeze(image_tensor_out, 0)
                 return (image_tensor_out,)
