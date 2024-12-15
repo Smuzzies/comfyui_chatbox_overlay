@@ -83,7 +83,3 @@ class ChatboxOverlay:
                     wrapped_line = word
             lines.append(wrapped_line)
         return '\n'.join(lines)
-
-NODE_CLASS_MAPPINGS = {
-    "Chatbox Overlay": ChatboxOverlay,
-}
